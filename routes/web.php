@@ -6,7 +6,7 @@ Route::get('/books/{title?}','BookController@view');
 
 Route::get('/', 'WelcomeController');
 
-/* Practice */
+/* Practice Routes*/
 Route::any('/practice/{n?}', 'PracticeController@index');
 
 if(config('app.env') == 'local') {
