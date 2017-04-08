@@ -74,6 +74,8 @@ class BookController extends Controller
 	        }
 	    }
 
+	    
+
 	    # Return the view, with the searchTerm *and* searchResults (if any)
 	    return view('books.search')->with([
 	        'searchTerm' => $searchTerm,
@@ -101,11 +103,10 @@ class BookController extends Controller
 	public function storeNewBook(Request $request) {
 
 		$this->validate($request, [
-			'title' => 'required|min:3',
+			'title' => 'required|min:0',
 			'publishedYear' => 'required|numeric'
 		]);
 
-	    $title = $request->input('title');
 
 	    # 
 	    #
@@ -114,7 +115,7 @@ class BookController extends Controller
 	    #
 
 	    # Redirect the user to the page to view the book
-	    return redirect('/books/'.$title);
+	    return view('/books/new');
 	}
 
 
