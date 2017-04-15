@@ -30,6 +30,11 @@ if(config('app.env') == 'local') {
 
 
 
+
+
+
+
+
 Route::get('/debug', function() {
 
 	echo '<pre>';
