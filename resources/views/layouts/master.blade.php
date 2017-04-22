@@ -15,6 +15,10 @@
 </head>
 <body>
 
+    @if(Session::get('message') != null)
+        <div class="message">{{ Session::get('message') }}</div>
+    @endif
+
     <header>
         <img
         src='http://making-the-internet.s3.amazonaws.com/laravel-foobooks-logo@2x.png'

@@ -11,21 +11,35 @@
     <form method='POST' action='/books/new'>
         {{ csrf_field() }}
 
-        <label for='title'>Title</label>
-        <input type='text' name='title' id='title' value='{{ old('title') }}'>
+        <small>* Required fields</small>
+    <br>
+        <label for='title'>* Title</label>
+        <input type='text' name='title' id='title' value='{{ old('title', 'Green Eggs & Ham') }}'>
+    
 
-        <label for='publishedYear'>Published Year</label>
-        <input type='text' name='publishedYear' id='publishedYear' value='{{ old('publishedYear') }}'>
+        <label for='published'>* Published Year</label>
+        <input type='text' name='published' id='published' value='{{ old('published', 1960) }}'>
+    
 
-        <input type='submit' value='Add book'>
+        <label for='cover'>* URL to a cover image</label>
+        <input type='text' name='cover' id='cover' value='{{ old('cover', 'http://prodimage.images-bn.com/pimages/9780394800165_p0_v4_s192x300.jpg') }}'>
+    
+
+        <label for='purchase_link'>* Purchase Link</label>
+        <input type='text' name='purchase_link' id='purchase_link' value='{{ old('purchase_link', 'http://www.barnesandnoble.com/w/green-eggs-and-ham-dr-seuss/1100170349') }}'>
+
+    <br>
+    
+        <input type='submit' value='Add new book'>
     </form>
 
+
     @if(count($errors) > 0)
-	    <ul>
-	        @foreach ($errors->all() as $error)
-	            <li>{{ $error }}</li>
-	        @endforeach
-	    </ul>
-	@endif
+        <ul>
+            @foreach($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
 
 @endsection
