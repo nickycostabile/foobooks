@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class WelcomeController extends Controller
 {
-    /** 
-    * Get
+
+    /**
+	* GET
     * /
-    */
+	*/
     public function __invoke() {
-		return view('welcome');
+
+        if(Auth::user()) {
+            return redirect('/books');
+        }
+
+        return view('welcome');
     }
 }

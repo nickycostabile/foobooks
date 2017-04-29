@@ -31,6 +31,26 @@
         <label for='purchase_link'>* Purchase Link</label>
         <input type='text' name='purchase_link' id='purchase_link' value='{{ old('purchase_link', $book->purchase_link) }}'>
 
+        <label for='author_id'>* Author:</label>
+        <select id='author_id' name='author_id'>
+            @foreach($authorsForDropdown as $author_id => $authorName)
+                 <option value='{{ $author_id }}' {{ ($book->author_id == $author_id) ? 'SELECTED' : '' }}>
+                     {{ $authorName }}
+                 </option>
+             @endforeach
+        </select>
+
+        <label for='tagsForCheckboxes'>Tags:</label>
+        @foreach($tagsForCheckboxes as $id => $name)
+            <input
+                type='checkbox'
+                value='{{ $id }}'
+                name='tags[]'
+                {{ (in_array($name, $tagsForThisBook)) ? 'CHECKED' : '' }}
+            >
+            {{ $name }} <br>
+        @endforeach
+
     <br>
     
         <input type='submit' value='Save Changes'>

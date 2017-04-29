@@ -5,6 +5,11 @@
     New book
 @endsection
 
+@push('head')
+    <link href='/css/books.css' rel='stylesheet'>
+@endpush
+
+
 @section('content')
     <h1>Add a new book</h1>
 
